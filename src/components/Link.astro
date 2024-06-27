@@ -1,0 +1,17 @@
+---
+// Define props for the component
+interface Props {
+  href: string;
+}
+
+const { href }: Props = Astro.props;
+const isExternal = href.startsWith("http");
+---
+
+<a
+  href={href}
+  target={isExternal ? "_blank" : "_self"}
+  class="underline decoration-neutral-600 underline-offset-4 transition-colors focus:(decoration-neutral-500 outline-offset-6) hover:decoration-neutral-500"
+>
+  <slot />
+</a>
