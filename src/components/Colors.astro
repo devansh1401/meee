@@ -1,0 +1,24 @@
+---
+import Card from "./Card/index.astro";
+
+const colors = [
+  { name: "red", class: "bg-primary-500" },
+  { name: "yellow", class: "bg-yellow-500" },
+  { name: "blue", class: "bg-blue-500" },
+  { name: "purple", class: "bg-purple-500" },
+  { name: "green", class: "bg-green-500" },
+];
+---
+
+<Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
+  <div class="flex justify-between items-center h-full -px-4">
+    {
+      colors.map((color) => (
+        <button
+          class={`w-10 h-10 rounded-full ${color.class} hover:scale-110 transition-transform`}
+          data-color={color.name}
+        />
+      ))
+    }
+  </div>
+</Card>

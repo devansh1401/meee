@@ -6,16 +6,21 @@ const GlobeComponent = () => {
   let mapContainer: HTMLDivElement | undefined;
 
   const visitedCountries = [
-    "France",
-    "China",
-    "Italy",
-    "Sri Lanka",
-    "Turkey",
-    "Greece",
-    "Malta",
-    "Hungary",
-    "Portugal",
-    "Marocco",
+    "Japan",  // East Asia, unique culture, stunning landscapes
+  "Iceland",  // Europe, dramatic landscapes, glaciers, volcanoes
+  "Peru",  // South America, Machu Picchu, Inca Trail, Amazon rainforest
+  "Argentina",  // South America, diverse landscapes, tango culture (different from Peru)
+  "Kenya",  // Africa, safaris, wildlife encounters
+  "New Zealand",  // Oceania, adventure sports, stunning scenery
+  "Vietnam",  // Southeast Asia, rich history, beautiful beaches
+  "Egypt",  // Africa, pyramids, ancient history (different from Morocco)
+  "Thailand",  // Southeast Asia, vibrant culture, delicious food
+  "Morocco",  // North Africa, deserts, culture (kept for variety)
+  "Canada",  // North America, vast wilderness, outdoor activities
+  "Brazil",  // South America, Amazon rainforest, Carnaval, beaches (different from Argentina, Peru)
+  "Spain",  // Europe, diverse landscapes, rich culture, flamenco
+  "Belize",  // Central America, Mayan ruins, rainforests, barrier reef
+  "Bhutan",  // Asia, Himalayas, Buddhist monasteries, unique culture
   ];
 
   onMount(() => {

@@ -8,6 +8,7 @@ import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
 import Globe from "../components/Globe";
 import ProjectCard from "../components/ProjectCard.astro";
+import Colors from "../components/Colors.astro";
 ---
 
 <script>
@@ -41,11 +42,22 @@ import ProjectCard from "../components/ProjectCard.astro";
     <ContactsCard />
     <TimeZone />
     <Now />
-    <ProjectCard />
     <Card
       colSpan="md:col-span-1"
       rowSpan="md:row-span-1"
-      title="Countries I visited"
+      title="Projects"
+      href="/projects"
+    >
+      <div class="flex flex-col">
+        <span class="text-xs text-primary-500 cursor-pointer"
+          >wanna see my werk!..?</span
+        >
+      </div>
+    </Card>
+    <Card
+      colSpan="md:col-span-1"
+      rowSpan="md:row-span-1"
+      title="Next Horizons 🪂️"
       href="travel"
       colorText="text-neutral-900"
     >
@@ -53,24 +65,23 @@ import ProjectCard from "../components/ProjectCard.astro";
         <Globe client:load />
       </div>
     </Card>
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-2 flex gap-4"
-      title="Blog"
-      href="/blog"
-    />
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
-      title="Projects"
-      href="/projects"
-    />
+    <!-- <Colors /> -->
+    <!-- <Card colSpan="md:col-span-1" rowSpan="md:row-span-1" href="/blog"> -->
+    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
+      <div class="flex flex-col">
+        <h1>Blogs</h1>
+        <span class="text-xs text-primary-500 cursor-pointer"
+          >currently WIP...</span
+        >
+      </div>
+    </Card>
+
     <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
       <p class="text-xs">
         © 2024 · Crafted with ♥️ using <a
           href="https://astro.build/"
           target="_blank"
-          class="text-red-500">Astro</a
+          class="text-primary-500">Astro</a
         > by devansh.
       </p>
     </Card>
