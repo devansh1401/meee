@@ -29,7 +29,7 @@ const projects = await getProjects();
       >Back</a
     >
     <h1 class="text-4xl font-bold mb-4 text-neutral-100">projects :)</h1>
-    <div class="grid grid-cols-2 gap-10 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
       {projects.map((project) => <Project {project} />)}
     </div>
     <br />
