@@ -1,6 +1,8 @@
 ---
 import Card from "./Card/index.astro";
 import Pulse from "./Pulse.astro";
+import { LINKS } from "../lib/constants";
+import { Icon } from "astro-icon/components";
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
@@ -16,5 +18,21 @@ import Pulse from "./Pulse.astro";
       href="https://leapflow.tech"
       class="text-primary-500 hover:text-primary-600">leapflow</a
     > automating your workload smoothly...
+  </p>
+  <p class="text-xs text-gray-500">
+    <em
+      >Building some next-level AI stuff and need an extra brain on the team?</em
+    >
+  </p>
+  <p class="text-xs flex items-center">
+    Hit me up on <a
+      href={LINKS.twitter}
+      aria-label="twitter profile"
+      target="_blank"
+      ><Icon
+        name="ri:twitter-fill"
+        class="h-6 text-grey-500 cursor-pointer ml-1 hover:text-primary-500"
+      />
+    </a>
   </p>
 </Card>
