@@ -4,7 +4,6 @@ import vercel from '@astrojs/vercel/serverless';
 import robotsTxt from "astro-robots-txt";
 import UnoCSS from "@unocss/astro";
 import icon from "astro-icon";
-
 import solidJs from "@astrojs/solid-js";
 
 import { remarkReadingTime } from "./src/lib/ remark-reading-time.mjs";
@@ -31,7 +30,9 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   output: "server",
-  adapter: vercel(), // Use Vercel adapter
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  }),
   vite: {
     assetsInclude: "**/*.riv",
   },
