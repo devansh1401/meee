@@ -1,14 +1,12 @@
-import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import vercel from '@astrojs/vercel/serverless';
-import robotsTxt from "astro-robots-txt";
-import UnoCSS from "@unocss/astro";
-import icon from "astro-icon";
-import solidJs from "@astrojs/solid-js";
+import { defineConfig } from "astro/config"
+import sitemap from "@astrojs/sitemap"
+import vercel from "@astrojs/vercel/serverless"
+import robotsTxt from "astro-robots-txt"
+import UnoCSS from "@unocss/astro"
+import icon from "astro-icon"
+import solidJs from "@astrojs/solid-js"
 
-import { remarkReadingTime } from "./src/lib/ remark-reading-time.mjs";
-
-import svelte from "@astrojs/svelte";
+import { remarkReadingTime } from "./src/lib/ remark-reading-time.mjs"
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,22 +16,21 @@ export default defineConfig({
     robotsTxt({
       sitemap: [
         "https://devanshkukreja.vercel.app/sitemap-index.xml",
-        "https://devanshkukreja.vercel.app/sitemap-0.xml",
-      ],
+        "https://devanshkukreja.vercel.app/sitemap-0.xml"
+      ]
     }),
     solidJs(),
     UnoCSS({ injectReset: true }),
-    icon(),
-    svelte(),
+    icon()
   ],
   markdown: {
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [remarkReadingTime]
   },
   output: "server",
   adapter: vercel({
     webAnalytics: { enabled: true }
   }),
   vite: {
-    assetsInclude: "**/*.riv",
-  },
-});
+    assetsInclude: "**/*.riv"
+  }
+})
