@@ -1,4 +1,7 @@
 ---
+// src/layouts/BasicLayout.astro
+import EnhancedGridBackground from '../components/EnhancedGridBackground.astro';
+
 interface Props {
   title: string;
   description: string;
@@ -114,6 +117,16 @@ const schema =
   <body
     class="bg-darkslate-700 md:h-screen flex flex-col justify-center items-center"
   >
+    <!-- Add the SimplifiedGridBackground component here -->
+    <EnhancedGridBackground
+      gridSize={90}
+      gridColor="rgba(100, 100, 100, 0.4)"
+      gridLineThickness={1}
+      backgroundColor="#0a0a0a"
+      enableAnimation={true}
+      animationSpeed={8}
+    />
+    
     <slot name="loader" />
     <slot />
   </body>
