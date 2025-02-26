@@ -1,12 +1,12 @@
-import { defineConfig } from "astro/config"
 import sitemap from "@astrojs/sitemap"
-import vercel from "@astrojs/vercel/serverless"
-import robotsTxt from "astro-robots-txt"
+import vercel from "@astrojs/vercel"
 import UnoCSS from "@unocss/astro"
 import icon from "astro-icon"
-import solidJs from "@astrojs/solid-js"
+import robotsTxt from "astro-robots-txt"
+import { defineConfig } from "astro/config"
 
-import { remarkReadingTime } from "./src/lib/ remark-reading-time.mjs"
+import solidJs from "@astrojs/solid-js"
+import { remarkReadingTime } from "./src/lib/remark-reading-time.mjs"
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,7 +28,9 @@ export default defineConfig({
   },
   output: "server",
   adapter: vercel({
-    webAnalytics: { enabled: true }
+    webAnalytics: {
+      enabled: true
+    }
   }),
   vite: {
     assetsInclude: "**/*.riv"

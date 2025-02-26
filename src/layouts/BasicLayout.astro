@@ -1,24 +1,17 @@
 ---
-// src/layouts/BasicLayout.astro
 import EnhancedGridBackground from '../components/EnhancedGridBackground.astro';
+import { LINKS } from "../lib/constants";
+
 
 interface Props {
   title: string;
   description: string;
   page?: "travel" | "blog";
   slug?: string | undefined;
-  frontmatter?: {
-    file: string;
-    url: string | undefined;
-  } & {
-    title: string;
-    description: string;
-    pubDate: string;
-    minutesRead: string;
-  };
+  pubDate?: string;
 }
 
-const { title, description, page, slug, frontmatter } = Astro.props;
+const { title, description, page, slug, pubDate } = Astro.props;
 const image =
   page === "travel"
     ? `${Astro.url.origin}/globe_preview.webp"`
@@ -30,12 +23,9 @@ const schema =
         "@context": "http://schema.org",
         "@type": "Person",
         name: "Devansh",
-        url: "https://devanshkukreja.co",
-        sameAs: [
-          "https://www.linkedin.com/in/devansh-kukreja",
-          "https://github.com/devansh1401",
-        ],
-        image: "https://devanshkukreja.co/devansh.webp",
+        url: Astro.url.origin,
+        sameAs: [LINKS.linkedin, LINKS.github],
+        image: `${Astro.url.origin}/devansh.webp`,
         jobTitle: "Freelance Frontend Developer",
         worksFor: {
           "@type": "Organization",
@@ -56,30 +46,27 @@ const schema =
         "@type": "BlogPosting",
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `https://devanshkukreja.co/blog/${slug}`,
+          "@id": `${Astro.url.origin}/blog/${slug}`,
         },
-        headline: frontmatter?.title || title,
-        description: frontmatter?.description || title,
-        image: "https://devanshkukreja.co/devansh.webp", //TODO: dynamic
+        headline: title || title,
+        description: description || title,
+        image: `${Astro.url.origin}/devansh.webp`, //TODO: dynamic
         author: {
           "@type": "Person",
           name: "Devansh",
-          url: "https://devanshkukreja.co",
-          sameAs: [
-            "https://www.linkedin.com/in/devansh-kukreja",
-            "https://github.com/devansh1401",
-          ],
+          url: Astro.url.origin,
+          sameAs: [LINKS.linkedin, LINKS.github],
         },
         publisher: {
           "@type": "Organization",
           name: "Devansh",
           logo: {
             "@type": "ImageObject",
-            url: "https://devanshkukreja.co/devansh.webp",
+            url: `${Astro.url.origin}/devansh.webp`,
           },
         },
-        datePublished: frontmatter?.pubDate || new Date().toISOString(),
-        dateModified: frontmatter?.pubDate || new Date().toISOString(),
+        datePublished: pubDate || new Date().toISOString(),
+        dateModified: pubDate || new Date().toISOString(),
       };
 ---
 
@@ -92,7 +79,7 @@ const schema =
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="/favicon/sitemap-index.xml" />
+    <meta name="robots" content="index, follow" />
     <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -100,7 +87,7 @@ const schema =
     <meta property="og:url" content={Astro.url.origin} />
     <meta
       property="og:image"
-      content={image || "https://devanshkukreja.co/devansh.webp"}
+      content={image || `${Astro.url.origin}/devansh.webp`}
     />
     <!-- Basic Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -108,26 +95,35 @@ const schema =
     <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content={image || "https://devanshkukreja.co/devansh.webp"}
+      content={image || `${Astro.url.origin}/devansh.webp`}
     />
 
     <link rel="preconnect" href="https://cdn.fontshare.com" />
+    {
+      page === "travel" && (
+        <link rel="canonical" href={`${Astro.url.origin}/travel`} />
+      )
+    }
+    {
+      page === "blog" && (
+        <link rel="canonical" href={`${Astro.url.origin}/blog/${slug}`} />
+      )
+    }
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body
     class="bg-darkslate-700 md:h-screen flex flex-col justify-center items-center"
   >
-    <!-- Add the SimplifiedGridBackground component here -->
-    <EnhancedGridBackground
-      gridSize={90}
-      gridColor="rgba(100, 100, 100, 0.4)"
-      gridLineThickness={1}
-      backgroundColor="#0a0a0a"
-      enableAnimation={true}
-      animationSpeed={8}
-    />
-    
-    <slot name="loader" />
+  <!-- Add the SimplifiedGridBackground component here -->
+  <EnhancedGridBackground
+  gridSize={90}
+  gridColor="rgba(100, 100, 100, 0.4)"
+  gridLineThickness={1}
+  backgroundColor="#0a0a0a"
+  enableAnimation={true}
+  animationSpeed={8}
+/>  
+  <slot name="loader" />
     <slot />
   </body>
 </html>
