@@ -1,0 +1,73 @@
+---
+import { workExperience } from "../lib/work";
+import Link from "./Link.astro";
+---
+
+<section class="work-experience">
+  <div class="flex flex-col gap-16">
+    {workExperience.map((item) => (
+      <div class="work-item card">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <!-- Time period -->
+          <div class="md:col-span-2 text-neutral-400 font-mono text-sm flex flex-col">
+            <span>{item.period.split("—")[0].trim()}</span>
+            <span>to</span>
+            <span>{item.period.split("—")[1].trim()}</span>
+          </div>
+          
+          <!-- Work details -->
+          <div class="md:col-span-10">
+            <h2 class="text-2xl font-medium text-neutral-200">
+              {item.role} @ 
+              {item.companyUrl ? (
+                <Link href={item.companyUrl}>{item.company}</Link>
+              ) : (
+                <span>{item.company}</span>
+              )}
+            </h2>
+            
+            {item.location && (
+              <div class="text-neutral-400 mt-1 text-sm">{item.location}</div>
+            )}
+            
+            {item.description && (
+              <p class="mt-4 text-neutral-500 font-mono text-sm tracking-wide leading-relaxed">{item.description}</p>
+            )}
+            
+            {item.backedProjects && item.backedProjects.length > 0 && (
+              <div class="mt-4">
+                <p class="text-neutral-300">So far, we have backed:</p>
+                <ul class="list-none mt-2 text-neutral-400">
+                  {item.backedProjects.map((project) => (
+                    <li>- {project}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            {item.bulletPoints && item.bulletPoints.length > 0 && (
+              <ul class="list-none mt-4 space-y-3 text-neutral-300">
+                {item.bulletPoints.map((point) => (
+                  <li class="flex gap-2">
+                    <span class="text-neutral-400">•</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .work-experience {
+    width: 100%;
+  }
+  
+  .work-item {
+    width: 100%;
+  }
+</style>

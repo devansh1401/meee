@@ -1,16 +1,14 @@
 ---
-layout: ../../layouts/LayoutBlogPost.astro
 title: "Hello, World"
 description: "this is a post example"
-pubDate: 2024-01-01
+pubDate: 2023-01-21
 category: "intro"
+draft: false
 ---
 
 # Hi there!
 
-# **Told you Work in progess!**
-
-This Markdown file creates a page at `devanshk.xyz/post1/`
+This Markdown file creates a page at `your-domain.com/blog/post1/`
 
 It probably isn't styled much, but Markdown does support:
 
