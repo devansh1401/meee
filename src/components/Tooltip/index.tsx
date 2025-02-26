@@ -1,12 +1,13 @@
-import { type JSX, Show, createSignal } from "solid-js";
+/** @jsxImportSource solid-js */
+import { type JSX, Show, createSignal } from "solid-js"
 
 type Props = {
-  children: JSX.Element;
-};
+  children: JSX.Element
+}
 
 function Tooltip(props: Props) {
-  const [isVisible, setIsVisible] = createSignal(false);
-  const [clickCount, setClickCount] = createSignal(0);
+  const [isVisible, setIsVisible] = createSignal(false)
+  const [clickCount, setClickCount] = createSignal(0)
 
   const messages = [
     "Hi there!",
@@ -31,37 +32,37 @@ function Tooltip(props: Props) {
     "Find another hobby!",
     "Stop, please!",
     "Okay, last one!",
-    "That's it, I'm done!",
-  ];
+    "That's it, I'm done!"
+  ]
 
   const currentMessage = () => {
-    const count = clickCount();
+    const count = clickCount()
     if (count >= messages.length) {
-      return messages[messages.length - 1];
+      return messages[messages.length - 1]
     }
-    return messages[count];
-  };
+    return messages[count]
+  }
 
   return (
     <div class="relative inline-block">
       <div
         onMouseDown={() => {
-          setIsVisible(!isVisible());
+          setIsVisible(!isVisible())
           if (isVisible()) {
-            setClickCount((count) => count + 1);
+            setClickCount((count) => count + 1)
           }
         }}
         onMouseUp={() => {
-          setIsVisible(false);
+          setIsVisible(false)
         }}
         onTouchStart={() => {
-          setIsVisible(!isVisible());
+          setIsVisible(!isVisible())
           if (isVisible()) {
-            setClickCount((count) => count + 1);
+            setClickCount((count) => count + 1)
           }
         }}
         onTouchEnd={() => {
-          setIsVisible(false);
+          setIsVisible(false)
         }}
       >
         {props.children}
@@ -73,7 +74,7 @@ function Tooltip(props: Props) {
         </div>
       </Show>
     </div>
-  );
+  )
 }
 
-export default Tooltip;
+export default Tooltip
