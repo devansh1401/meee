@@ -14,10 +14,13 @@ const projects = await getProjects();
 import { getCollection } from "astro:content";
 import { formatDate } from "../lib/helpers";
 
+// const posts = (await getCollection("blog"))?.sort(
+//   (blogEntryA, blogEntryB) =>
+//     (blogEntryB.data.pubDate || new Date()).getTime() -
+//     (blogEntryA.data.pubDate || new Date()).getTime()
+// );
 const posts = (await getCollection("blog"))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
+  (a, b) => (a.data.order || 0) - (b.data.order || 0)
 );
 ---
 

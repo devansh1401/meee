@@ -7,7 +7,8 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional()
+    updatedDate: z.coerce.date().optional(),
+    order: z.number().default(0)
     // You can add other fields needed for your blog content here
   })
 })

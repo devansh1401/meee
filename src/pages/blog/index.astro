@@ -3,10 +3,13 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PostRow from "../../components/Blog/PostRow.astro";
 
+// const posts = (await getCollection("blog"))?.sort(
+//   (blogEntryA, blogEntryB) =>
+//     (blogEntryB.data.pubDate || new Date()).getTime() -
+//     (blogEntryA.data.pubDate || new Date()).getTime()
+// );
 const posts = (await getCollection("blog"))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
+  (a, b) => (a.data.order || 0) - (b.data.order || 0)
 );
 ---
 
