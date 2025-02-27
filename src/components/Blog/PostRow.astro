@@ -17,9 +17,9 @@ const { title, date, id } = Astro.props;
     class="text-sm md:text-base decoration-none flex justify-between"
     href={`/blog/${id}`}
   >
-    <p class="inline-block whitespace-nowrap font-mono lowercase">
-      {title}
-    </p>
+  <p class="inline-block font-mono lowercase truncate max-w-[60%] sm:max-w-[70%] md:whitespace-nowrap">
+    {title}
+  </p>
     <time
       class="text-right tabular-nums font-mono lowercase"
       datetime={date.toISOString()}
