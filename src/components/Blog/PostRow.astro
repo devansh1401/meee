@@ -14,18 +14,20 @@ const { title, date, id } = Astro.props;
   class="list-none w-full text-neutral-100 hover:text-red-400 ease-in-out transition-colors border-b-neutral-400 border-dashed border-b-1 my-2"
 >
   <a
-    class="text-sm md:text-base decoration-none flex justify-between"
+    class="decoration-none block w-full py-2"
     href={`/blog/${id}`}
   >
-  <p class="inline-block font-mono lowercase truncate max-w-[60%] sm:max-w-[70%] md:whitespace-nowrap">
-    {title}
-  </p>
-    <time
-      class="text-right tabular-nums font-mono lowercase"
-      datetime={date.toISOString()}
-      data-date={date.toISOString()}
-    >
-      {formatDate(date)}
-    </time>
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+      <p class="font-mono lowercase break-words max-w-full md:max-w-[70%] mb-1 md:mb-0 leading-tight">
+        {title}
+      </p>
+      <time
+        class="text-left md:text-right tabular-nums font-mono lowercase text-sm text-neutral-400"
+        datetime={date.toISOString()}
+        data-date={date.toISOString()}
+      >
+        {formatDate(date)}
+      </time>
+    </div>
   </a>
 </li>
