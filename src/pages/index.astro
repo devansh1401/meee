@@ -100,7 +100,7 @@ const posts = (await getCollection("blog"))?.sort(
   </div>
 </Card>
 
-<Card
+<!-- <Card
       colSpan="md:col-span-1"
       rowSpan="md:row-span-2 flex gap-4"
       title="Blog"
@@ -113,7 +113,7 @@ const posts = (await getCollection("blog"))?.sort(
               <p class="inline-block whitespace-nowrap text-xs">
                 {post.data.title}
               </p>
-              {post.data.pubDate && (
+              {/* {post.data.pubDate && (
                 <time
                   class="text-right tabular-nums text-xs"
                   datetime={post.data.pubDate.toISOString()}
@@ -121,13 +121,34 @@ const posts = (await getCollection("blog"))?.sort(
                 >
                   {formatDate(post.data.pubDate)}
                 </time>
-              )}
+              )} */}
             </div>
             // </a>
           ))
         }
       </div>
-    </Card>
+    </Card> -->
+    <Card
+  colSpan="md:col-span-1"
+  rowSpan="md:row-span-2 flex"
+  title="Blog"
+  href="/blog"
+>
+  <div class="flex flex-col gap-3 mt-3">
+    {
+      posts?.slice(0, 3).map((post) => (
+        <div class="list-none w-full text-neutral-300 hover:text-primary-500 ease-in-out transition-all duration-300 my-0 group">
+          <div class="flex justify-between items-center w-full pb-2 border-b border-neutral-800 group-hover:border-neutral-700">
+            <p class="truncate text-xs font-mono tracking-wide font-light">
+              {post.data.title.toLowerCase()}
+            </p>
+      
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Card>
 
     <Card
       colSpan="md:col-span-1"

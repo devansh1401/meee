@@ -1,4 +1,5 @@
 ---
+// src/layouts/BasicLayout.astro
 import EnhancedGridBackground from '../components/EnhancedGridBackground.astro';
 import { LINKS } from "../lib/constants";
 
@@ -8,13 +9,15 @@ interface Props {
   description: string;
   page?: "travel" | "blog";
   slug?: string | undefined;
-  pubDate?: string;
+  pubDate?: Date | string;
 }
 
 const { title, description, page, slug, pubDate } = Astro.props;
+// Convert pubDate to ISO string if it's a Date object
+const pubDateString = pubDate instanceof Date ? pubDate.toISOString() : pubDate;
 const image =
   page === "travel"
-    ? `${Astro.url.origin}/globe_preview.webp"`
+    ? `${Astro.url.origin}/globe_preview.webp`
     : `${Astro.url.origin}/devansh.webp`;
 
 const schema =
@@ -65,8 +68,8 @@ const schema =
             url: `${Astro.url.origin}/devansh.webp`,
           },
         },
-        datePublished: pubDate || new Date().toISOString(),
-        dateModified: pubDate || new Date().toISOString(),
+        datePublished: pubDateString,
+        dateModified: pubDateString,
       };
 ---
 
@@ -97,7 +100,8 @@ const schema =
       name="twitter:image"
       content={image || `${Astro.url.origin}/devansh.webp`}
     />
-
+  <!-- RSS feed link -->
+  <link rel="alternate" type="application/rss+xml" title="Devansh Kukreja's Blog" href="/rss.xml" />
     <link rel="preconnect" href="https://cdn.fontshare.com" />
     {
       page === "travel" && (
@@ -109,6 +113,45 @@ const schema =
         <link rel="canonical" href={`${Astro.url.origin}/blog/${slug}`} />
       )
     }
+    <!-- Fix Twitter script with proper TypeScript support -->
+    <script define:vars={{ title }}>
+      // TypeScript declarations for client-side
+      if (typeof window !== 'undefined') {
+        // Initialize Twitter widget
+        window.twttr = (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+          if (d.getElementById(id)) return t;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          // Fix the null check here
+          if (fjs && fjs.parentNode) {
+            fjs.parentNode.insertBefore(js, fjs);
+          } else {
+            d.head.appendChild(js);
+          }
+          t._e = [];
+          t.ready = function(f) {
+            t._e.push(f);
+          };
+          return t;
+        }(document, "script", "twitter-wjs"));
+        
+        // Wait for twttr to be ready
+        if (window.twttr) {
+          window.twttr.ready(function() {
+            window.twttr.widgets.load();
+            window.twttr.events.bind('rendered', function(e) {
+              // Set theme to dark (safely accessing properties)
+              if (e && e.target && e.target.contentDocument) {
+                e.target.contentDocument.documentElement.classList.add('dark');
+              }
+            });
+          });
+        }
+      }
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body
@@ -116,19 +159,43 @@ const schema =
   >
   <!-- Add the SimplifiedGridBackground component here -->
   <EnhancedGridBackground
-  gridSize={90}
-  gridColor="rgba(100, 100, 100, 0.4)"
-  gridLineThickness={1}
-  backgroundColor="#0a0a0a"
-  enableAnimation={true}
-  animationSpeed={8}
-/>  
+    gridSize={90}
+    gridColor="rgba(100, 100, 100, 0.4)"
+    gridLineThickness={1}
+    backgroundColor="#0a0a0a"
+    enableAnimation={true}
+    animationSpeed={8}
+  />  
   <slot name="loader" />
     <slot />
   </body>
 </html>
 
+<!-- Add this to your existing <style is:global> section in BasicLayout.astro -->
 <style is:global>
+  /* Twitter Card Styling */
+  :root {
+    --tc-padding: 0; /* Remove the padding */
+    --tc-border-color: transparent; /* Remove the border */
+    --tc-background-color: transparent; /* Make background transparent */
+  }
+
+  /* Twitter embed customization */
+  .twitter-tweet {
+    margin: 1.5rem auto !important;
+    max-width: 550px !important;
+    background-color: transparent !important;
+  }
+  
+  /* Force dark theme for Twitter embeds */
+  .twitter-tweet-rendered {
+    background-color: transparent !important;
+  }
+  
+  .twitter-tweet iframe {
+    background-color: transparent !important;
+  }
+
   @font-face {
     font-family: "CabinetGrotesk";
     src: url("/fonts/CabinetGrotesk-Variable.ttf") format("truetype-variations");
@@ -146,6 +213,47 @@ const schema =
     font-weight: 100 1000;
   }
 
+  /* Add Geist Mono Variable Font */
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/webfonts/GeistMono[wght].woff2") format("woff2-variations"),
+         url("/fonts/variable/GeistMono[wght].ttf") format("truetype-variations");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Fallback for browsers that don't support variable fonts */
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/webfonts/GeistMono-Regular.woff2") format("woff2"),
+         url("/fonts/ttf/GeistMono-Regular.ttf") format("truetype"),
+         url("/fonts/otf/GeistMono-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/webfonts/GeistMono-Medium.woff2") format("woff2"),
+         url("/fonts/ttf/GeistMono-Medium.ttf") format("truetype"),
+         url("/fonts/otf/GeistMono-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/fonts/webfonts/GeistMono-Bold.woff2") format("woff2"),
+         url("/fonts/ttf/GeistMono-Bold.ttf") format("truetype"),
+         url("/fonts/otf/GeistMono-Bold.otf") format("opentype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
   body {
     margin: 0;
     font-family: "Satoshi", sans-serif;
@@ -158,7 +266,7 @@ const schema =
   h4,
   h5,
   h6 {
-    font-family: "Cabinet Grotesk", sans-serif;
+    font-family: "CabinetGrotesk", sans-serif;
   }
   p {
     font-family: "Satoshi";
@@ -166,5 +274,29 @@ const schema =
 
   b {
     font-weight: 700 !important;
+  }
+  
+  /* Add styling for code and pre elements */
+  code, pre, .code {
+    font-family: "Geist Mono", monospace;
+  }
+
+  /* Custom scrollbar */
+  *::-webkit-scrollbar {
+    width: 15px;
+    background: #0a0a0a;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #222;
+    border-radius: 3px;
+  }
+
+  /* Add this to ensure content in blog posts uses Geist Mono */
+  .content p, 
+  .content li,
+  .content blockquote,
+  .content div {
+    font-family: "Geist Mono", monospace !important;
   }
 </style>
