@@ -44,7 +44,9 @@ export default defineConfig({
         "https://devanshkukreja.vercel.app/sitemap-0.xml"
       ]
     }),
-    react(),
+    react({
+      include: ["src/react-components/**/*"]
+    }),
     // MDX after React
     mdx(),
     // Solid after both
