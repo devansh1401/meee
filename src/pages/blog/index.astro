@@ -3,10 +3,13 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import PostRow from "../../components/Blog/PostRow.astro";
 
+// const posts = (await getCollection("blog"))?.sort(
+//   (blogEntryA, blogEntryB) =>
+//     (blogEntryB.data.pubDate || new Date()).getTime() -
+//     (blogEntryA.data.pubDate || new Date()).getTime()
+// );
 const posts = (await getCollection("blog"))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
+  (a, b) => (a.data.order || 0) - (b.data.order || 0)
 );
 ---
 
@@ -24,21 +27,31 @@ const posts = (await getCollection("blog"))?.sort(
   description="Software developer with strong focus on the user experience animations and micro interactions"
 >
   <main
-    class="w-screen h-screen flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
+    class="w-screen h-screen flex flex-col justify-start items-start max-w-4xl mx-auto p-8"
   >
-    <a
-      href="/"
+    
+     <a href="/"
       class="text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 mb-8 border-1 border-solid border-neutral-600 rounded-lg"
       >Back</a
     >
-    <h1 class="text-4xl font-bold mb-4 text-neutral-100">Posts</h1>
+    <div class="flex justify-between w-full items-center mb-4">
+      <h1 class="text-4xl font-bold text-neutral-100">Posts</h1>
+      <a href="/rss.xml" title="Subscribe via RSS" class="text-neutral-400 hover:text-red-400 transition-colors flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block">
+          <path d="M4 11a9 9 0 0 1 9 9"></path>
+          <path d="M4 4a16 16 0 0 1 16 16"></path>
+          <circle cx="5" cy="19" r="1"></circle>
+        </svg>
+        <span class="text-sm font-mono lowercase">rss</span>
+      </a>
+    </div>
     <ul class="w-full">
       {
         posts?.map((post) => (
           <PostRow
             title={post.data.title || "No title"}
             date={post.data.pubDate || new Date()}
-            url={post.slug}
+            id={post.id}
           />
         ))
       }

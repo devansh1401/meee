@@ -1,23 +1,24 @@
 // uno.config.ts
-import { defineConfig, presetUno, presetWebFonts } from "unocss";
+import { defineConfig, presetUno, presetWebFonts } from "unocss"
 
 export default defineConfig({
   content: {
-    filesystem: ["**/*.{html,js,ts,jsx,tsx,vue,astro}"],
+    filesystem: ["**/*.{html,js,ts,jsx,tsx,vue,astro}"]
   },
   theme: {
     boxShadow: {
       custom: `2px 2px 0`,
-      "custom-hover": `1px 1px 0`,
+      "custom-hover": `1px 1px 0`
     },
     fontFamily: {
       sans: ["CabinetGrotesk", "Satoshi"],
+      mono: ["Geist Mono", "monospace"]
     },
     gridTemplateRows: {
-      "auto-250": "repeat(auto-fill, 250px)",
+      "auto-250": "repeat(auto-fill, 250px)"
     },
     gridTemplateColumns: {
-      "4-minmax": "repeat(4, minmax(150px, 1fr))",
+      "4-minmax": "repeat(4, minmax(150px, 1fr))"
     },
     colors: {
       gray: {
@@ -30,7 +31,7 @@ export default defineConfig({
         600: "#525252",
         700: "#404040",
         800: "#262626",
-        900: "#171717",
+        900: "#171717"
       },
       darkslate: {
         50: "#3D3D3D",
@@ -42,7 +43,7 @@ export default defineConfig({
         600: "#141414",
         700: "#111111",
         800: "#0E0E0E",
-        900: "#0B0B0B" /* Deeper and darker */,
+        900: "#0B0B0B" /* Deeper and darker */
       },
       primary: {
         100: "#F9CDD3",
@@ -53,7 +54,7 @@ export default defineConfig({
         600: "#CF2F3D",
         700: "#B82534",
         800: "#A01B2B",
-        900: "#891321",
+        900: "#891321"
       },
       yellow: {
         100: "#FFF9C4",
@@ -64,7 +65,7 @@ export default defineConfig({
         600: "#FDD835",
         700: "#FBC02D",
         800: "#F9A825",
-        900: "#F57F17",
+        900: "#F57F17"
       },
       blue: {
         100: "#BBDEFB",
@@ -75,7 +76,7 @@ export default defineConfig({
         600: "#1E88E5",
         700: "#1976D2",
         800: "#1565C0",
-        900: "#0D47A1",
+        900: "#0D47A1"
       },
       purple: {
         100: "#E1BEE7",
@@ -86,7 +87,7 @@ export default defineConfig({
         600: "#8E24AA",
         700: "#7B1FA2",
         800: "#6A1B9A",
-        900: "#4A148C",
+        900: "#4A148C"
       },
       green: {
         100: "#C8E6C9",
@@ -97,9 +98,9 @@ export default defineConfig({
         600: "#43A047",
         700: "#388E3C",
         800: "#2E7D32",
-        900: "#1B5E20",
-      },
-    },
+        900: "#1B5E20"
+      }
+    }
   },
   presets: [
     presetUno(),
@@ -107,8 +108,8 @@ export default defineConfig({
       provider: "fontshare",
       fonts: {
         sans: ["Cabinet Grotesk", "Satoshi"],
-        serif: "Zodiak",
-      },
-    }),
-  ],
-});
+        serif: "Zodiak"
+      }
+    })
+  ]
+})

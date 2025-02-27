@@ -1,0 +1,72 @@
+---
+import Card from "./Card/index.astro";
+import type { Project } from "../lib/projects";
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="grid grid-cols-1 gap-6 w-full">
+  {
+    projects.map((project) => (
+      <Card
+        href={project.link}
+        title=""
+        body=""
+        colSpan="col-span-1"
+        height="h-auto"
+        colorText="text-white"
+      >
+        <!-- We'll handle the title and arrow manually to avoid double arrows -->
+        <div class="flex justify-between items-start mb-2">
+          <h2 class="text-xl font-bold text-white font-mono">{project.repo}</h2>
+          <!-- We're not adding an arrow here since the Card component already adds one -->
+        </div>
+        
+        <p class="text-gray-300 mb-4 font-mono">{project.description}</p>
+        
+        {project.period && (
+          <p class="text-sm text-gray-500 mb-6 font-mono">{project.period}</p>
+        )}
+
+        {project.achievements && project.achievements.length > 0 && (
+          <div class="mt-6">
+            <h3 class="text-white font-semibold text-base mb-3 font-mono">highlights</h3>
+            <ul class="space-y-2">
+              {project.achievements.map((achievement) => (
+                <li class="flex items-start gap-2">
+                  <span class="text-gray-500">•</span>
+                  <span class="text-gray-400 font-mono">{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {project.technologies && project.technologies.length > 0 && (
+          <div class="mt-6">
+            <h3 class="text-white font-semibold text-base mb-3 font-mono">technologies</h3>
+            <div class="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <span class="px-3 py-1 text-sm text-gray-300 bg-gray-800/80 rounded font-mono">
+                  {tech.toLowerCase()}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </Card>
+    ))
+  }
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
