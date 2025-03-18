@@ -21,9 +21,9 @@ export const workExperience: WorkItem[] = [
     description:
       "Developed AI-powered workflows and automation tools for improving team efficiency across multiple platforms.",
     bulletPoints: [
-      "Architected AI agents using OpenAPI spec and Cloudflare Workers AI, automating workflows across Slack, Linear, and Jira with 40% reduction in manual tasks.",
-      "Developed an AI-powered workflow system integrating Slack and Jira, leading to 50% faster issue resolution.",
-      "Created seamless AI streaming interfaces with Vercel SDK and TypeScript, improving response times by 35% for AI-assisted support."
+      "Built a backend-first framework that dynamically generates UIs from Node.js logic, eliminating the need for custom frontend development and simplifying internal tool creation.",
+      "Engineered an enterprise-grade SDK with asynchronous execution patterns, comprehensive validation systems, and type safety that transforms business logic into production-ready applications with minimal code.",
+      "Developed a stateless UI generation pipeline that transforms backend function signatures into reactive components through Asynchronous I/O patterns and RESTful event propagation without requiring traditional frontend frameworks."
     ]
   },
   {
