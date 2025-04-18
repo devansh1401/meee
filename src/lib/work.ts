@@ -19,7 +19,7 @@ export const workExperience: WorkItem[] = [
     companyUrl: "https://leapflow.tech", // Update with actual URL
     location: "Remote",
     description:
-      "Developed AI-powered workflows and automation tools for improving team efficiency across multiple platforms.",
+      "Developed a framework that generates UIs from backend logic, enabling rapid creation of enterprise applications without traditional frontend development.",
     bulletPoints: [
       "Built a backend-first framework that dynamically generates UIs from Node.js logic, eliminating the need for custom frontend development and simplifying internal tool creation.",
       "Engineered an enterprise-grade SDK with asynchronous execution patterns, comprehensive validation systems, and type safety that transforms business logic into production-ready applications with minimal code.",
