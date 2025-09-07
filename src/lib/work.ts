@@ -13,32 +13,40 @@ export interface WorkItem {
 // Export the work experience data
 export const workExperience: WorkItem[] = [
   {
-    period: "May 2024 — Present",
-    role: "Founding Engineer",
-    company: "Leapflow",
-    companyUrl: "https://leapflow.tech", // Update with actual URL
-    location: "Remote",
+    period: "Jul 2025 — Present",
+    role: "System Development Engineer Intern",
+    company: "Amazon",
+    companyUrl: "https://amazon.com",
+    location: "Gurugram, India • Onsite",
+    description: "still working :)"
+  },
+  {
+    period: "May 2025 — Sep 2025",
+    role: "Student Developer",
+    company: "Google Summer of Code - JLab",
+    companyUrl:
+      "https://summerofcode.withgoogle.com/programs/2025/projects/OPlG0KHV",
+    location: "California, United States • Remote",
     description:
-      "Developed a framework that generates UIs from backend logic, enabling rapid creation of enterprise applications without traditional frontend development.",
-    bulletPoints: [
-      "Built a backend-first framework that dynamically generates UIs from Node.js logic, eliminating the need for custom frontend development and simplifying internal tool creation.",
-      "Engineered an enterprise-grade SDK with asynchronous execution patterns, comprehensive validation systems, and type safety that transforms business logic into production-ready applications with minimal code.",
-      "Developed a stateless UI generation pipeline that transforms backend function signatures into reactive components through Asynchronous I/O patterns and RESTful event propagation without requiring traditional frontend frameworks."
-    ]
+      "Contributed to ENTS, a large-scale environmental sensor network platform for a research group at the University of California, Santa Cruz."
+  },
+  {
+    period: "May 2024 — May 2025",
+    role: "Founding Engineer",
+    company: "Leapflow (now Mocha, pivoted)",
+    companyUrl: "https://www.mocha.email/",
+    location: "San Francisco • Remote",
+    description:
+      "Developed a framework that generates UIs from backend logic, enabling rapid creation of enterprise applications without traditional frontend development."
   },
   {
     period: "Jul 2024 — Dec 2024",
     role: "Software Development Engineer Intern",
     company: "MagicSlides App",
-    companyUrl: "https://magicslides.app", // Update with actual URL
-    location: "Remote",
+    companyUrl: "https://magicslides.app",
+    location: "Bangalore, India • Remote",
     description:
-      "Built and integrated features for an app with 1.4M+ users, focusing on UI/UX improvements and system architecture.",
-    bulletPoints: [
-      "Built and integrated key features into an app with 1.4M+ users, including user authentication and system architecture improvements.",
-      "Developed an interactive canvas-based app using Fabric.js and Next.js, empowering users to customize AI-generated presentations.",
-      "Launched a sub-product with significant recurring revenue, automating testing workflows that reduced QA time by 20%."
-    ]
+      "Built and integrated features for an app with 1.4M+ users, focusing on UI/UX improvements and system architecture."
   }
 ]
 
