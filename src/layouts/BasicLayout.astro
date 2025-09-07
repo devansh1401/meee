@@ -153,6 +153,7 @@ const schema =
       }
     </script>
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <slot name="head" />
   </head>
   <body
     class="bg-darkslate-700 md:h-screen flex flex-col justify-center items-center"
