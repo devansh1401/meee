@@ -4,11 +4,12 @@ export const LINKS = {
   medium: "https://x.com/itssdevk",
   discord: "https://discord.com/users/880029277821763655",
   twitter: "https://x.com/itssdevk",
-  Resume: "https://drive.google.com/file/d/1hCUJBy0J5ZpIz3zmU1OSlIu4dDpY_uA9/view?usp=sharing"
-};
+  Resume:
+    "https://drive.google.com/file/d/1H2JKu-HFRcuTQInw3D7o24hQY1_PJojF/view?usp=sharing"
+}
 
 export const loaderAnimation = [
   ".loader",
   { opacity: [1, 0], pointerEvents: "none" },
-  { easing: "ease-out" },
-];
+  { easing: "ease-out" }
+]
