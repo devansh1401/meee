@@ -17,8 +17,8 @@ const { title, description, page, slug, pubDate } = Astro.props;
 const pubDateString = pubDate instanceof Date ? pubDate.toISOString() : pubDate;
 const image =
   page === "travel"
-    ? `${Astro.url.origin}/globe_preview.webp`
-    : `${Astro.url.origin}/devansh.webp`;
+    ? `${Astro.url.origin}/globe_preview.png`
+    : `${Astro.url.origin}/social.png`;
 
 const schema =
   page !== "blog"
