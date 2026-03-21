@@ -13,16 +13,25 @@ export interface WorkItem {
 // Export the work experience data
 export const workExperience: WorkItem[] = [
   {
-    period: "Jul 2025 — Present",
+    period: "Jan 2026 — Present",
+    role: "Software Engineer",
+    company: "Traycer",
+    companyUrl: "https://traycer.ai/",
+    location: "San Francisco • Remote",
+    description: "Teaching AI agents not to mess up :)"
+  },
+  {
+    period: "Jul 2025 — Dec 2025",
     role: "System Development Engineer Intern",
     company: "Amazon",
     companyUrl: "https://amazon.com",
     location: "Gurugram, India • Onsite",
-    description: "still working :)"
+    description:
+      "Worked with the Payments Storage team on Lumos, a secure vault, building a batch redrive automation system for payment processing infrastructure to replace legacy manual processes and reduce operational overhead for high volume transactions."
   },
   {
     period: "May 2025 — Sep 2025",
-    role: "Student Developer",
+    role: " Open Source Developer",
     company: "Google Summer of Code - JLab",
     companyUrl:
       "https://summerofcode.withgoogle.com/programs/2025/projects/OPlG0KHV",
